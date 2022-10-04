@@ -4,7 +4,7 @@ from pymargo.core import Engine, Provider
 class HelloProvider(Provider):
 
     def __init__(self, engine, provider_id):
-        super(engine, provider_id)
+        super().__init__(engine, provider_id)
         self.register("say_hello", "hello")
 
     def hello(self, handle, name):
@@ -16,7 +16,7 @@ class HelloProvider(Provider):
 def WhenFinalize():
     print("Finalize was called")
 
-engine = Engine('tcp')
+engine = Engine(f'verbs://{sys.argv[1]}:sys.argv[2]')
 provider_id = 42
 print("Server running at address " + str(engine.addr()) + " with provider_id " + str(provider_id))
 
